@@ -47,3 +47,96 @@
     </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeri Karya | Hilmi Abikautzar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-item {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .gallery-item.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .description {
+      padding: 1rem;
+      text-align: center;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Galeri Karya Terbaik</h1>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="foto1.jpg" alt="Karya 1">
+      <div class="description">Deskripsi karya pertama</div>
+    </div>
+    <div class="gallery-item">
+      <img src="foto2.jpg" alt="Karya 2">
+      <div class="description">Deskripsi karya kedua</div>
+    </div>
+    <div class="gallery-item">
+      <img src="foto3.jpg" alt="Karya 3">
+      <div class="description">Deskripsi karya ketiga</div>
+    </div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.gallery-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    items.forEach(item => {
+      observer.observe(item);
+    });
+  </script>
+
+</body>
+</html>
